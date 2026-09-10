@@ -1,24 +1,35 @@
 import NavBar from "./components/NavBar";
-import GenreList from "./components/GenreList";
+import GenreList, { type Genre } from "./components/GenreList";
 import GameHeading from "./components/GameHeading";
-import PlatformSelector from "./components/PlatformSelector";
+import PlatformSelector, { type Platform } from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 import GameGrid from "./components/GameGrid";
+import { useState } from "react";
 
 function App() {
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null,
+  );
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
   return (
     <div className="p-3">
       <NavBar />
       <div className="d-flex">
         <aside className="sidebar d-none d-lg-block">
-          <GenreList />
+          <GenreList
+            selectedGenre={selectedGenre}
+            onSelectGenre={(genre) => setSelectedGenre(genre)}
+          />
         </aside>
         <main className="flex-grow-1">
           <div className="ps-2">
             <GameHeading />
             <div className="d-flex mb-4">
               <div className="me-4">
-                <PlatformSelector />
+                <PlatformSelector
+                  selectedPlatform={selectedPlatform}
+                  onSelectPlatform={(platform) => setSelectedPlatform(platform)}
+                />
               </div>
               <SortSelector />
             </div>

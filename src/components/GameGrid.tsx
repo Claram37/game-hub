@@ -1,11 +1,12 @@
-import { SimpleGrid } from "@chakra-ui/react";
 import GameCard from "./GameCard";
 
 const GameGrid = () => {
   return (
-    <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} padding="10px" gap={6}>
-      <GameCard />
-    </SimpleGrid>
+    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 p-2">
+      <div className="col">
+        <GameCard />
+      </div>
+    </div>
   );
 };
 

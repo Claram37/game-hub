@@ -1,4 +1,4 @@
-import { Card, CardBody, Heading, HStack, Image } from "@chakra-ui/react";
+import { Card } from "react-bootstrap";
 // import { Game } from '../hooks/useGames'
 
 import CriticScore from "./CriticScore";
@@ -9,15 +9,20 @@ import CriticScore from "./CriticScore";
 
 const GameCard = () => {
   return (
-    <Card.Root>
-      <Image src="https://media.rawg.io/media/games/26d/26d4437715bee60138dab4a7c8c59c92.jpg" />
-      <CardBody>
-        <HStack justifyContent="space-between" marginBottom={3}>
+    <Card className="overflow-hidden">
+      <Card.Img
+        variant="top"
+        src="https://media.rawg.io/media/games/26d/26d4437715bee60138dab4a7c8c59c92.jpg"
+      />
+      <Card.Body className="p-4">
+        <div className="d-flex align-items-center justify-content-between mb-3">
           <CriticScore />
-        </HStack>
-        <Heading fontSize="2xl">Game name</Heading>
-      </CardBody>
-    </Card.Root>
+        </div>
+        <Card.Title as="h2" className="fs-4 fw-semibold mb-0">
+          Game name
+        </Card.Title>
+      </Card.Body>
+    </Card>
   );
 };
 

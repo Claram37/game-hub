@@ -1,31 +1,13 @@
-import {
-  Button,
-  Menu,
-  MenuItemGroup,
-  MenuTrigger,
-  Portal,
-} from "@chakra-ui/react";
-import { LuChevronDown } from "react-icons/lu";
+import { Dropdown } from "react-bootstrap";
 
 const PlatformSelector = () => {
   return (
-    <Menu.Root>
-      <MenuTrigger>
-        <Button variant="subtle" borderRadius={8} borderStyle="none">
-          PlayStation
-          <LuChevronDown />
-        </Button>
-      </MenuTrigger>
-      <Portal>
-        <Menu.Positioner>
-          <Menu.Content>
-            <MenuItemGroup>
-              <Menu.Item value="playstation">PlayStation</Menu.Item>
-            </MenuItemGroup>
-          </Menu.Content>
-        </Menu.Positioner>
-      </Portal>
-    </Menu.Root>
+    <Dropdown>
+      <Dropdown.Toggle variant="subtle">PlayStation</Dropdown.Toggle>
+      <Dropdown.Menu>
+        <Dropdown.Item eventKey="playstation">PlayStation</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
   );
 };
 

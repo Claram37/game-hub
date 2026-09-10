@@ -1,14 +1,13 @@
-import { HStack, Switch } from "@chakra-ui/react";
+import { Form } from "react-bootstrap";
 
 const ColorModeSwitch = () => {
   return (
-    <HStack>
-      <Switch.Root>
-        <Switch.HiddenInput />
-        <Switch.Control />
-        <Switch.Label>Dark Mode</Switch.Label>
-      </Switch.Root>
-    </HStack>
+    <Form.Check
+      type="switch"
+      id="color-mode-switch"
+      label="Dark Mode"
+      className="text-nowrap"
+    />
   );
 };
 

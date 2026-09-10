@@ -1,0 +1,23 @@
+/* Fixed-width genre sidebar (Bootstrap's 12-column grid cannot express 250px) */
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+/* Chakra-like "subtle" button: theme-aware grey chip, 14px/500 text.
+   Used as <Button variant="subtle"> / <Dropdown.Toggle variant="subtle">. */
+.btn-subtle {
+  --bs-btn-color: var(--bs-body-color);
+  --bs-btn-bg: var(--bs-secondary-bg);
+  --bs-btn-border-width: 0;
+  --bs-btn-border-radius: 0.5rem;
+  --bs-btn-hover-color: var(--bs-body-color);
+  --bs-btn-hover-bg: var(--bs-border-color);
+  --bs-btn-active-color: var(--bs-body-color);
+  --bs-btn-active-bg: var(--bs-border-color);
+  --bs-btn-focus-shadow-rgb: var(--bs-secondary-color-rgb);
+  --bs-btn-font-size: 0.875rem;
+  --bs-btn-font-weight: 500;
+  --bs-btn-padding-x: 1rem;
+  --bs-btn-padding-y: 0.5rem;
+}

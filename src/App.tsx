@@ -1,4 +1,3 @@
-import { Box, Flex, Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GenreList from "./components/GenreList";
 import GameHeading from "./components/GameHeading";
@@ -8,36 +7,26 @@ import GameGrid from "./components/GameGrid";
 
 function App() {
   return (
-    <Grid
-      padding="16px"
-      templateAreas={{
-        base: `"nav" "main"`,
-        lg: `"nav nav" "aside main"`,
-      }}
-      templateColumns={{
-        base: "1fr",
-        lg: "250px 1fr",
-      }}
-    >
-      <GridItem area="nav">
-        <NavBar />
-      </GridItem>
-      <GridItem area="aside" display={{ base: "none", lg: "block" }}>
-        <GenreList />
-      </GridItem>
-      <GridItem area="main">
-        <Box paddingLeft={2}>
-          <GameHeading />
-          <Flex marginBottom={5}>
-            <Box marginRight={5}>
-              <PlatformSelector />
-            </Box>
-            <SortSelector />
-          </Flex>
-        </Box>
-        <GameGrid />
-      </GridItem>
-    </Grid>
+    <div className="p-3">
+      <NavBar />
+      <div className="d-flex">
+        <aside className="sidebar d-none d-lg-block">
+          <GenreList />
+        </aside>
+        <main className="flex-grow-1">
+          <div className="ps-2">
+            <GameHeading />
+            <div className="d-flex mb-4">
+              <div className="me-4">
+                <PlatformSelector />
+              </div>
+              <SortSelector />
+            </div>
+          </div>
+          <GameGrid />
+        </main>
+      </div>
+    </div>
   );
 }
 

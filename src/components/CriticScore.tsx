@@ -1,18 +1,21 @@
-import { Badge } from "@chakra-ui/react";
+import { Badge } from "react-bootstrap";
 
 // interface Props {
 //   score: number;
 // }
 
 const CriticScore = () => {
-  // const color = score > 75 ? "green" : score > 60 ? "yellow" : "";
+  // const tone =
+  //   score > 75 ? "success" : score > 60 ? "warning" : "secondary";
 
+  // Note: Bootstrap hides empty badges (.badge:empty { display: none }),
+  // so nothing is visible here until a score is rendered inside it.
   return (
     <Badge
-      //colorScheme={color}
-      fontSize="14px"
-      paddingX={2}
-      borderRadius="4px"
+      bg="success-subtle"
+      text="success-emphasis"
+      //bg={`${tone}-subtle`} text={`${tone}-emphasis`}
+      className="fs-6 fw-medium px-2 rounded-1"
     ></Badge>
   );
 };

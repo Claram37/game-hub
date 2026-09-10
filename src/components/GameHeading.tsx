@@ -1,11 +1,5 @@
-import { Heading } from "@chakra-ui/react";
-
 const GameHeading = () => {
-  return (
-    <Heading as="h1" size="5xl" marginY={5}>
-      PC Action Games
-    </Heading>
-  );
+  return <h1 className="display-5 fw-semibold my-4">PC Action Games</h1>;
 };
 
 export default GameHeading;

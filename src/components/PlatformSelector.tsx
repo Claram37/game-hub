@@ -1,11 +1,33 @@
 import { Dropdown } from "react-bootstrap";
+import platforms from "../data/platform";
 
-const PlatformSelector = () => {
+export interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+}
+
+interface Props {
+  onSelectPlatform: (platform: Platform) => void;
+  selectedPlatform: Platform | null;
+}
+
+const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   return (
     <Dropdown>
-      <Dropdown.Toggle variant="subtle">PlayStation</Dropdown.Toggle>
+      <Dropdown.Toggle variant="subtle">
+        {" "}
+        {selectedPlatform?.name || "Platforms"}
+      </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item eventKey="playstation">PlayStation</Dropdown.Item>
+        {platforms.map((platform) => (
+          <Dropdown.Item
+            onClick={() => onSelectPlatform(platform)}
+            key={platform.id}
+          >
+            {platform.name}
+          </Dropdown.Item>
+        ))}
       </Dropdown.Menu>
     </Dropdown>
   );

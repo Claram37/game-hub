@@ -11,6 +11,8 @@ function App() {
     null,
   );
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+
+  const [selectedOrder, setSelectedOrder] = useState("");
   return (
     <div className="p-3">
       <NavBar />
@@ -23,7 +25,10 @@ function App() {
         </aside>
         <main className="flex-grow-1">
           <div className="ps-2">
-            <GameHeading />
+            <GameHeading
+              selectedGenre={selectedGenre}
+              selectedPlatform={selectedPlatform}
+            />
             <div className="d-flex mb-4">
               <div className="me-4">
                 <PlatformSelector
@@ -31,7 +36,10 @@ function App() {
                   onSelectPlatform={(platform) => setSelectedPlatform(platform)}
                 />
               </div>
-              <SortSelector />
+              <SortSelector
+                sortOrder={selectedOrder}
+                onSelectSortOrder={(sortOrder) => setSelectedOrder(sortOrder)}
+              />
             </div>
           </div>
           <GameGrid />

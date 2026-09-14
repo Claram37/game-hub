@@ -20,16 +20,14 @@ const ColorModeSwitch = () => {
   };
 
   return (
-    <>
-      <Form.Check
-        type="switch"
-        id="color-mode-switch"
-        label="Dark Mode"
-        onClick={toggleTheme}
-        style={{ fontSize: "14px" }}
-        checked={theme === "dark"}
-      />
-    </>
+    <Form.Check
+      type="switch"
+      id="color-mode-switch"
+      label="Dark Mode"
+      onChange={toggleTheme}
+      style={{ fontSize: "14px" }}
+      checked={theme === "dark"}
+    />
   );
 };
 

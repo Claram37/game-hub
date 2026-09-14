@@ -42,7 +42,10 @@ function App() {
               />
             </div>
           </div>
-          <GameGrid />
+          <GameGrid
+            selectedGenre={selectedGenre}
+            selectedPlatform={selectedPlatform}
+          />
         </main>
       </div>
     </div>

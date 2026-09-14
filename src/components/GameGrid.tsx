@@ -1,32 +1,40 @@
 import GameCard from "./GameCard";
-import results from "../data/games";
+import useGames, { type Platform } from "../hooks/useGames";
+import GameCardSkeleton from "./GameCardSkeleton";
 import type { Genre } from "./GenreList";
-import type { Platform } from "./PlatformSelector";
 
 interface Props {
   selectedPlatform: Platform | null;
   selectedGenre: Genre | null;
+  sortOrder: string;
 }
-// some() walks through the selected platform or genre and returns true if any entry has that ID
-const GameGrid = ({ selectedPlatform, selectedGenre }: Props) => {
-  const games = results.flatMap((result) => result.results); // map the results array to initialize the games
-  const visibleGames = games.filter(
-    (game) =>
-      (!selectedPlatform ||
-        game.parent_platforms.some(
-          (p) => p.platform.id === selectedPlatform.id,
-        )) &&
-      (!selectedGenre || game.genres.some((g) => g.id === selectedGenre.id)),
+
+const GameGrid = ({ selectedPlatform, selectedGenre, sortOrder }: Props) => {
+  const { games, error, isLoading } = useGames(
+    selectedPlatform,
+    selectedGenre,
+    sortOrder,
   );
+  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
-    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 p-2">
-      {visibleGames.map((game) => (
-        <div key={game.id} className="col">
-          <GameCard game={game} />
-        </div>
-      ))}
-    </div>
+    <>
+      {error && <p className="text-danger px-2">{error}</p>}
+      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 p-2">
+        {isLoading &&
+          skeletons.map((skeleton) => (
+            <div key={skeleton} className="col">
+              <GameCardSkeleton />
+            </div>
+          ))}
+        {!isLoading &&
+          games.map((game) => (
+            <div key={game.id} className="col">
+              <GameCard game={game} />
+            </div>
+          ))}
+      </div>
+    </>
   );
 };
 

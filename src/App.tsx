@@ -1,10 +1,11 @@
 import NavBar from "./components/NavBar";
 import GenreList, { type Genre } from "./components/GenreList";
 import GameHeading from "./components/GameHeading";
-import PlatformSelector, { type Platform } from "./components/PlatformSelector";
+import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 import GameGrid from "./components/GameGrid";
 import { useState } from "react";
+import type { Platform } from "./hooks/useGames";
 
 function App() {
   const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
@@ -45,6 +46,7 @@ function App() {
           <GameGrid
             selectedGenre={selectedGenre}
             selectedPlatform={selectedPlatform}
+            sortOrder={selectedOrder}
           />
         </main>
       </div>

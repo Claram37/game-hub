@@ -1,11 +1,6 @@
 import { Dropdown } from "react-bootstrap";
 import platforms from "../data/platform";
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
+import type { Platform } from "../hooks/useGames";
 
 interface Props {
   onSelectPlatform: (platform: Platform) => void;

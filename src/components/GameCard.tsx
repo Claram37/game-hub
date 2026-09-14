@@ -1,30 +1,12 @@
 import { Card } from "react-bootstrap";
-import noImage from "../assets/no-image-placeholder.webp";
-
-// import { Game } from '../hooks/useGames'
-
+import type { Game } from "../hooks/useGames";
 import CriticScore from "./CriticScore";
-import type { Platform } from "./PlatformSelector";
 import PlatformIconList from "./PlatformIconList";
-export interface Game {
-  id: number;
-  name: string;
-  background_image: string;
-  parent_platforms: { platform: Platform }[];
-  metacritic: number;
-  rating: number;
-}
+import getCroppedImageUrl from "../services/image-url";
+
 interface Props {
   game: Game;
 }
-
-const getCroppedImageUrl = (url: string) => {
-  if (!url) return noImage; // empty image
-
-  const target = "media/";
-  const index = url.indexOf(target) + target.length;
-  return url.slice(0, index) + "crop/600/400/" + url.slice(index);
-};
 
 const GameCard = ({ game }: Props) => {
   return (

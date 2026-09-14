@@ -1,5 +1,5 @@
 import type { IconType } from "react-icons";
-import type { Platform } from "./PlatformSelector";
+import type { Platform } from "../hooks/useGames";
 import { MdPhoneIphone } from "react-icons/md";
 import {
   BsAndroid,

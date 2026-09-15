@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 import type { Genre } from "../hooks/useGenres";
-import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
+import useGenres from "../hooks/useGenres";
 
 interface Props {
   onSelectGenre: (genres: Genre) => void;
@@ -9,12 +9,12 @@ interface Props {
 }
 
 const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
-  const { genres } = useGenres();
+  const { data } = useGenres();
   return (
     <>
       <h2 className="fs-4 fw-semibold mt-5 mb-3">Genres</h2>
       <ul className="list-unstyled mb-0">
-        {genres.map((genre) => (
+        {data.map((genre) => (
           <li key={genre.id} className="py-2">
             <div className="d-flex align-items-center gap-2">
               <img

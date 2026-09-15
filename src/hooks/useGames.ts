@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { CanceledError } from "axios";
 import apiClient from "../services/api-client";
-import type { Genre } from "../components/GenreList";
+import type { Genre } from "../hooks/useGenres";
 
 export interface Platform {
   id: number;
@@ -29,9 +29,7 @@ const useGames = (
 ) => {
   const platformId = selectedPlatform?.id;
   const genreId = selectedGenre?.id;
-  // One string that identifies the current combination of filters. Results are
-  // tagged with the key they answered, so "loading" is simply "the key we have
-  // results for is not the key currently selected". No setState in the effect body.
+
   const queryKey = `${platformId ?? ""}|${genreId ?? ""}|${sortOrder}`;
 
   const [games, setGames] = useState<Game[]>([]);
@@ -57,7 +55,7 @@ const useGames = (
         setLoadedKey(queryKey);
       })
       .catch((err) => {
-        if (err instanceof CanceledError) return; // aborted on purpose (StrictMode or a newer query)
+        if (err instanceof CanceledError) return;
         setGames([]);
         setError(err.message);
         setLoadedKey(queryKey);

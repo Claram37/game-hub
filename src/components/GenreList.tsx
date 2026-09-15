@@ -1,28 +1,20 @@
 import { Button } from "react-bootstrap";
-import genre from "../data/genre";
-import noImage from "../assets/no-image-placeholder.webp";
-export interface Genre {
-  id: number;
-  name: string;
-  image_background: string;
-}
+import type { Genre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
+import getCroppedImageUrl from "../services/image-url";
 
 interface Props {
   onSelectGenre: (genres: Genre) => void;
   selectedGenre: Genre | null;
 }
 
-const getCroppedImageUrl = (url: string) => {
-  if (!url) return noImage; // empty image
-  return url;
-};
-
 const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
+  const { genres } = useGenres();
   return (
     <>
       <h2 className="fs-4 fw-semibold mt-5 mb-3">Genres</h2>
       <ul className="list-unstyled mb-0">
-        {genre.map((genre) => (
+        {genres.map((genre) => (
           <li key={genre.id} className="py-2">
             <div className="d-flex align-items-center gap-2">
               <img
@@ -48,4 +40,3 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 };
 
 export default GenreList;
-//${genre.id === selectedGenre?.id ? "fw-bold" : "fw-normal"}

@@ -24,7 +24,9 @@ function App() {
   });
   return (
     <div className="p-3">
-      <NavBar />
+      <NavBar
+        onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
+      />
       <div className="d-flex">
         <aside className="sidebar d-none d-lg-block">
           <GenreList

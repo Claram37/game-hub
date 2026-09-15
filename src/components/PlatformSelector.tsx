@@ -1,6 +1,6 @@
 import { Dropdown } from "react-bootstrap";
-import platforms from "../data/platform";
-import type { Platform } from "../hooks/useGames";
+import type { Platform } from "../hooks/usePlatforms";
+import usePlatforms from "../hooks/usePlatforms";
 
 interface Props {
   onSelectPlatform: (platform: Platform) => void;
@@ -8,6 +8,10 @@ interface Props {
 }
 
 const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
+  const { data, error } = usePlatforms();
+
+  if (error) return null;
+
   return (
     <Dropdown>
       <Dropdown.Toggle variant="subtle">
@@ -15,7 +19,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
         {selectedPlatform?.name || "Platforms"}
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        {platforms.map((platform) => (
+        {data.map((platform) => (
           <Dropdown.Item
             onClick={() => onSelectPlatform(platform)}
             key={platform.id}

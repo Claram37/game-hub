@@ -5,8 +5,8 @@ import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 import GameGrid from "./components/GameGrid";
 import { useState } from "react";
-import type { Platform } from "./hooks/useGames";
 import type { Genre } from "./hooks/useGenres";
+import type { Platform } from "./hooks/usePlatforms";
 
 export interface GameQuery {
   genre: Genre | null;

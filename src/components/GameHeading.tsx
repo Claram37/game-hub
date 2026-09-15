@@ -1,5 +1,5 @@
-import type { Platform } from "../hooks/useGames";
 import type { Genre } from "../hooks/useGenres";
+import type { Platform } from "../hooks/usePlatforms";
 
 interface Props {
   selectedPlatform: Platform | null;

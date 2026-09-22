@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import type { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 import useGenres from "../hooks/useGenres";
@@ -9,12 +9,14 @@ interface Props {
 }
 
 const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
-  const { data } = useGenres();
+  const { data, isLoading } = useGenres();
+
+  if (isLoading) return <Spinner />;
   return (
     <>
       <h2 className="fs-4 fw-semibold mt-5 mb-3">Genres</h2>
       <ul className="list-unstyled mb-0">
-        {data.map((genre) => (
+        {data?.map((genre) => (
           <li key={genre.id} className="py-2">
             <div className="d-flex align-items-center gap-2">
               <img

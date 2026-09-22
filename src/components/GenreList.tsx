@@ -16,7 +16,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
     <>
       <h2 className="fs-4 fw-semibold mt-5 mb-3">Genres</h2>
       <ul className="list-unstyled mb-0">
-        {data?.map((genre) => (
+        {data?.results.map((genre) => (
           <li key={genre.id} className="py-2">
             <div className="d-flex align-items-center gap-2">
               <img

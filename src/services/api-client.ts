@@ -3,6 +3,7 @@ export interface FetchResponse<T> {
   next: string | null;
   count: number;
   results: T[];
+  previous: string | null;
 }
 
 const axiosInstance = axios.create({

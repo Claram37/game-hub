@@ -1,6 +1,7 @@
 import { Dropdown } from "react-bootstrap";
 import type { Platform } from "../hooks/usePlatforms";
 import usePlatforms from "../hooks/usePlatforms";
+import usePlatform from "../hooks/usePlatform";
 
 interface Props {
   onSelectPlatform: (platform: Platform) => void;
@@ -9,9 +10,7 @@ interface Props {
 
 const PlatformSelector = ({ onSelectPlatform, selectedPlatformId }: Props) => {
   const { data, error } = usePlatforms();
-  const selectedPlatform = data.results.find(
-    (p) => p.id === selectedPlatformId,
-  );
+  const selectedPlatform = usePlatform(selectedPlatformId ?? 0);
 
   if (error) return null;
 

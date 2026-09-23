@@ -2,6 +2,7 @@ import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import type { GameQuery } from "../App";
 import type { Platform } from "./usePlatforms";
 import APIClient, { type FetchResponse } from "../services/api-client";
+import ms from "ms";
 
 export interface Game {
   id: number;
@@ -31,7 +32,7 @@ const useGames = (gameQuery: GameQuery) => {
         },
       }),
     placeholderData: keepPreviousData,
-    staleTime: 24 * 60 * 60 * 1000, // 24 hrs
+    staleTime: ms("24h"), // 24 hrs
   });
 };
 

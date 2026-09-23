@@ -1,17 +1,22 @@
-import type { Genre } from "../hooks/useGenres";
-import type { Platform } from "../hooks/usePlatforms";
+import type { GameQuery } from "../App";
+import useGenres from "../hooks/useGenres";
+import usePlatforms from "../hooks/usePlatforms";
 
 interface Props {
-  selectedPlatform: Platform | null;
-  selectedGenre: Genre | null;
+  gameQuery: GameQuery;
 }
 
-const GameHeading = ({ selectedPlatform, selectedGenre }: Props) => {
-  return (
-    <h1 className="display-5 fw-semibold my-4">
-      {selectedPlatform?.name} {selectedGenre?.name} Games
-    </h1>
+const GameHeading = ({ gameQuery }: Props) => {
+  const { data: genres } = useGenres();
+  const genre = genres?.results.find((g) => g.id === gameQuery.genreId);
+
+  const { data: platforms } = usePlatforms();
+  const platform = platforms?.results.find(
+    (p) => p.id === gameQuery.platformId,
   );
+
+  const heading = `${platform?.name || ""} ${genre?.name || ""} Games`;
+  return <h1 className="display-5 fw-semibold my-4">{heading}</h1>;
 };
 
 export default GameHeading;

@@ -11,21 +11,26 @@ export interface GameQuery {
   platformId?: number;
   sortOrder: string;
   searchText: string;
+  page: number;
 }
 
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  const [gameQuery, setGameQuery] = useState<GameQuery>({
+    page: 1,
+  } as GameQuery);
   return (
     <div className="p-3">
       <NavBar
-        onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
+        onSearch={(searchText) =>
+          setGameQuery({ ...gameQuery, searchText, page: 1 })
+        }
       />
       <div className="d-flex">
         <aside className="sidebar d-none d-lg-block">
           <GenreList
             selectedGenreId={gameQuery.genreId}
             onSelectGenre={(genre) =>
-              setGameQuery({ ...gameQuery, genreId: genre.id })
+              setGameQuery({ ...gameQuery, genreId: genre.id, page: 1 })
             }
           />
         </aside>
@@ -37,19 +42,26 @@ function App() {
                 <PlatformSelector
                   selectedPlatformId={gameQuery.platformId}
                   onSelectPlatform={(platform) =>
-                    setGameQuery({ ...gameQuery, platformId: platform.id })
+                    setGameQuery({
+                      ...gameQuery,
+                      platformId: platform.id,
+                      page: 1,
+                    })
                   }
                 />
               </div>
               <SortSelector
                 sortOrder={gameQuery.sortOrder}
                 onSelectSortOrder={(sortOrder) =>
-                  setGameQuery({ ...gameQuery, sortOrder })
+                  setGameQuery({ ...gameQuery, sortOrder, page: 1 })
                 }
               />
             </div>
           </div>
-          <GameGrid gameQuery={gameQuery} />
+          <GameGrid
+            gameQuery={gameQuery}
+            onPageChange={(page) => setGameQuery({ ...gameQuery, page })}
+          />
         </main>
       </div>
     </div>

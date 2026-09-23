@@ -14,7 +14,7 @@ export interface Game {
 
 const apiClient = new APIClient<Game>("/games");
 
-export const PAGE_SIZE = 20;
+export const PAGE_SIZE = 12;
 
 const useGames = (gameQuery: GameQuery) => {
   return useQuery<FetchResponse<Game>, Error>({

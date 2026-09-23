@@ -53,7 +53,8 @@ const GameGrid = ({ gameQuery, onPageChange }: Props) => {
           </Button>
           <span>Page {page}</span>
           <Button
-            variant="secondary"
+            className="btn btn-primary"
+            variant="primary"
             disabled={!hasNext || isPlaceholderData}
             onClick={() => changePage(page + 1)}
           >

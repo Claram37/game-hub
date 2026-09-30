@@ -1,15 +1,13 @@
-import type { GameQuery } from "../App";
 import useGenre from "../hooks/useGenre";
 import usePlatform from "../hooks/usePlatform";
+import useGameQueryStore from "../store";
 
-interface Props {
-  gameQuery: GameQuery;
-}
+const GameHeading = () => {
+  const genreId = useGameQueryStore((s) => s.gameQuery.genreId);
+  const genre = useGenre(genreId ?? 0);
 
-const GameHeading = ({ gameQuery }: Props) => {
-  const genre = useGenre(gameQuery.genreId ?? 0);
-
-  const platform = usePlatform(gameQuery.platformId ?? 0);
+  const platformId = useGameQueryStore((s) => s.gameQuery.platformId);
+  const platform = usePlatform(platformId ?? 0);
 
   const heading = `${platform?.name || ""} ${genre?.name || ""} Games`;
   return <h1 className="display-5 fw-semibold my-4">{heading}</h1>;

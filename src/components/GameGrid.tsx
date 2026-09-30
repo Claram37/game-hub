@@ -1,26 +1,23 @@
 import GameCard from "./GameCard";
 import useGames from "../hooks/useGames";
 import GameCardSkeleton from "./GameCardSkeleton";
-import type { GameQuery } from "../App";
 import { Button } from "react-bootstrap";
+import useGameQueryStore from "../store";
 
-interface Props {
-  gameQuery: GameQuery;
-  onPageChange: (page: number) => void;
-}
+const GameGrid = () => {
+  const page = useGameQueryStore((s) => s.gameQuery.page);
+  const setPage = useGameQueryStore((s) => s.setPage);
 
-const GameGrid = ({ gameQuery, onPageChange }: Props) => {
-  const { data, error, isLoading, isPlaceholderData } = useGames(gameQuery);
+  const { data, error, isLoading, isPlaceholderData } = useGames();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
   if (error) return <p className="text-danger px-2">{error.message}</p>;
 
-  const page = gameQuery.page;
   const hasPrevious = page > 1;
   const hasNext = !!data?.next;
 
   const changePage = (newPage: number) => {
-    onPageChange(newPage);
+    setPage(newPage);
     window.scrollTo({ top: 0 });
   };
 

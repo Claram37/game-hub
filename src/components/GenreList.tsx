@@ -1,15 +1,12 @@
 import { Button, Spinner } from "react-bootstrap";
-import type { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 import useGenres from "../hooks/useGenres";
+import useGameQueryStore from "../store";
 
-interface Props {
-  onSelectGenre: (genres: Genre) => void;
-  selectedGenreId?: number;
-}
-
-const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
+const GenreList = () => {
   const { data, isLoading } = useGenres();
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
+  const setSelectedGenreId = useGameQueryStore((s) => s.setGenreId);
 
   if (isLoading) return <Spinner />;
   return (
@@ -29,7 +26,7 @@ const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
               <Button
                 variant="link"
                 className={`p-0 text-body text-decoration-none ${genre.id === selectedGenreId ? "fw-bold" : "fw-normal"}`}
-                onClick={() => onSelectGenre(genre)}
+                onClick={() => setSelectedGenreId(genre.id)}
               >
                 {genre.name}
               </Button>

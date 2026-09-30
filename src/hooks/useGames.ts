@@ -1,8 +1,8 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import type { GameQuery } from "../App";
 import type { Platform } from "./usePlatforms";
 import APIClient, { type FetchResponse } from "../services/api-client";
 import ms from "ms";
+import useGameQueryStore from "../store";
 
 export interface Game {
   id: number;
@@ -17,7 +17,9 @@ const apiClient = new APIClient<Game>("/games");
 
 export const PAGE_SIZE = 12;
 
-const useGames = (gameQuery: GameQuery) => {
+const useGames = () => {
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
+
   return useQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
     queryFn: () =>

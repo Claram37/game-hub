@@ -7,7 +7,7 @@ interface Props {
 }
 const GameAttributes = ({ game }: Props) => {
   return (
-    <dl className="row row-cols-2">
+    <dl className="row row-cols-4">
       <DefinitionItem term="Platforms">
         {game.parent_platforms?.map(({ platform }) => (
           <p key={platform.id}>{platform.name}</p>

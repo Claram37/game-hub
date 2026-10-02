@@ -10,7 +10,7 @@ import {
   BsWindows,
   BsXbox,
 } from "react-icons/bs";
-import type { Platform } from "../hooks/usePlatforms";
+import type Platform from "../entities/Platform";
 
 interface Props {
   platforms: Platform[];

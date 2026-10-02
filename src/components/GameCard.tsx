@@ -1,9 +1,9 @@
 import { Card } from "react-bootstrap";
-import type { Game } from "../hooks/useGames";
 import CriticScore from "./CriticScore";
 import PlatformIconList from "./PlatformIconList";
 import getCroppedImageUrl from "../services/image-url";
 import { Link } from "react-router-dom";
+import type Game from "../entities/Game";
 
 interface Props {
   game: Game;

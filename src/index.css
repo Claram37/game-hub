@@ -27,3 +27,10 @@
   --bs-btn-padding-x: 1rem;
   --bs-btn-padding-y: 0.5rem;
 }
+.game-card {
+  transition: transform 0.15s ease-in;
+}
+.game-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}

@@ -1,0 +1,15 @@
+import { useQuery } from "@tanstack/react-query";
+import type { Game } from "./useGames";
+import APIClient from "../services/api-client";
+import ms from "ms";
+
+const apiClient = new APIClient<Game>("/games");
+
+const useGame = (slug: string) => {
+  return useQuery<Game, Error>({
+    queryKey: ["game", slug],
+    queryFn: () => apiClient.get(slug),
+    staleTime: ms("24h"), // 24 hrs
+  });
+};
+export default useGame;

@@ -3,6 +3,7 @@ import useGame from "../hooks/useGame";
 import { Spinner } from "react-bootstrap";
 import getEnglishDescription from "../services/description";
 import ExpandableText from "../components/ExpandableText";
+import GameAttributes from "../components/GameAttributes";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
@@ -20,6 +21,7 @@ const GameDetailPage = () => {
         <ExpandableText key={game.slug}>
           {getEnglishDescription(game.description_raw)}
         </ExpandableText>
+        <GameAttributes game={game} />
       </div>
     </>
   );

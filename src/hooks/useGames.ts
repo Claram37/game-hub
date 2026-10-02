@@ -1,23 +1,8 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import type { Platform } from "./usePlatforms";
 import APIClient, { type FetchResponse } from "../services/api-client";
 import ms from "ms";
 import useGameQueryStore from "../store";
-import type { Genre } from "./useGenres";
-
-export interface Game {
-  id: number;
-  name: string;
-  slug: string;
-  background_image: string;
-  parent_platforms: { platform: Platform }[];
-  metacritic: number;
-  rating: number;
-  genres: Genre[];
-  // publishers: Publisher[];
-  description_raw: string;
-  rating_top: number;
-}
+import type { Game } from "../entities/Game";
 
 const apiClient = new APIClient<Game>("/games");
 

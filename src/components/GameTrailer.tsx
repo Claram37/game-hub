@@ -18,7 +18,6 @@ const GameTrailer = ({ gameId }: Props) => {
       poster={first.preview}
       controls
       className="w-100 rounded"
-      style={{ maxWidth: "1440px" }}
     />
   ) : null;
 };

@@ -1,14 +1,12 @@
-import NavBar from "./components/NavBar";
-import GenreList from "./components/GenreList";
-import GameHeading from "./components/GameHeading";
-import PlatformSelector from "./components/PlatformSelector";
-import SortSelector from "./components/SortSelector";
-import GameGrid from "./components/GameGrid";
+import GameGrid from "../components/GameGrid";
+import GameHeading from "../components/GameHeading";
+import GenreList from "../components/GenreList";
+import PlatformSelector from "../components/PlatformSelector";
+import SortSelector from "../components/SortSelector";
 
-function App() {
+const HomePage = () => {
   return (
     <div className="p-3">
-      <NavBar />
       <div className="d-flex">
         <aside className="sidebar d-none d-lg-block">
           <GenreList />
@@ -28,6 +26,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
-export default App;
+export default HomePage;

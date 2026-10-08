@@ -14,7 +14,7 @@ const GameScreenshots = ({ gameId }: Props) => {
   if (!data?.results.length) return null;
 
   return (
-    <div className="row row-cols-2 g-4 p-2">
+    <div className="row row-cols-2 g-4">
       {data.results.map((file) => (
         <div key={file.id} className="col">
           <img
